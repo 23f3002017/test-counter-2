@@ -1,0 +1,11 @@
+{
+  "name": "test-counter-2",
+  "version": "1.0.0",
+  "description": "Create a simple counter app",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000"
+  },
+  "author": "student@example.com",
+  "license": "MIT"
+}

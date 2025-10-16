@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .counter-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            font-size: 1.5rem;
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        .counter-value {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <article class="counter-container" aria-labelledby="counter-title">
+        <h1 id="counter-title">Counter Application</h1>
+        <div class="counter-value" aria-live="polite">0</div>
+        <button id="increment" aria-label="Increment counter">Increment</button>
+        <button id="decrement" aria-label="Decrement counter" disabled>Decrement</button>
+    </article>
+
+    <script>
+        // Initialize counter value
+        let count = 0;
+
+        // Get elements
+        const counterValue = document.querySelector('.counter-value');
+        const incrementButton = document.getElementById('increment');
+        const decrementButton = document.getElementById('decrement');
+
+        // Function to update the counter display
+        function updateCounter() {
+            counterValue.textContent = count; // Update displayed count
+            decrementButton.disabled = count <= 0; // Disable decrement if count is 0
+        }
+
+        // Increment button event listener
+        incrementButton.addEventListener('click', () => {
+            count++; // Increment count
+            updateCounter(); // Update display
+        });
+
+        // Decrement button event listener
+        decrementButton.addEventListener('click', () => {
+            if (count > 0) {
+                count--; // Decrement count
+                updateCounter(); // Update display
+            }
+        });
+
+        // Initial display update
+        updateCounter();
+    </script>
+</body>
+</html>
